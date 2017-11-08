@@ -1,0 +1,23 @@
+<h2><%= @restaurant.name %></h2>
+<h3><%= @restaurant.address %></h3>
+<h4><%= @restaurant.phone_number %></h4>
+<h4><%= @restaurant.category %></h4>
+
+<%= link_to 'Index', restaurants_path %>
+<%= link_to 'Edit', edit_restaurant_path %>
+<%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<h1>Reviews</h1>
+
+<div class="container">
+  <div class="row">
+    <% @reviews.each do |review| %>
+      <div class="col col-xs-6 col-xs-offset-3">
+        <h2>Rating: <%= review.rating %></h2>
+        <p><%= review.content %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Add a review', new_restaurant_review_path(@restaurant) %>
